@@ -1,0 +1,116 @@
+<div className="wrappers  login-box stage" id="stage-01">
+        <form>
+          <h2>Verification-1</h2>
+          <h4>
+            Enter your password to procceed next <br /> page and your password
+            is your Name
+          </h4>
+          <div className="input-box">
+            <span className="icon">
+              <ion-icon name="lock-closed"></ion-icon>
+            </span>
+            <input type="password" id="PASSWORD" required />
+            <label>Password</label>
+          </div>
+          <button type="button" onClick={checkPassword}>
+            Verify
+          </button>
+        </form>
+      </div>
+
+      <div className="wrappers  login-box stage" id="stage-02" style={{display:"none"}}>
+        <form>
+          <h2>Verification-2</h2>
+          <h4>
+            Enter 10 Digit Code  <br/>Hint : Number
+          </h4>
+          <div className="input-box">
+            <span className="icon">
+              <ion-icon name="lock-closed"></ion-icon>
+            </span>
+            <input type="password" id="CODE" required />
+            <label>CODE</label>
+          </div>
+          <button type="button" onClick={checkCode}>
+            Verify
+          </button>
+        </form>
+      </div>
+
+      <div className="wrappers  login-box stage" id="stage-03" style={{display:"none"}}>
+        <form>
+          <h2>Verification-3</h2>
+          <h4>
+            Enter your Address Password  <br/>Hint : ******7@g***.com
+          </h4>
+          <div className="input-box">
+            <span className="icon">
+              <ion-icon name="lock-closed"></ion-icon>
+            </span>
+            <input type="password" id="EMAIL" required />
+            <label>Address</label>
+          </div>
+          <button type="button" onClick={checkEmail}>
+            Verify
+          </button>
+        </form>
+      </div>
+
+      <div className="wrappers  login-box stage" id="stage-04" style={{display:"none"}}>
+        <form>
+          <h2>Verification-4</h2>
+          <h4>
+             {text} <br/>
+          </h4>
+          <div className="input-box">
+           
+            {/* <input type="password" id="KNOW" required />
+            <label>Address</label> */}
+            <fieldset id="group2">
+              <div className="input-box-1"> <label htmlFor="I-1" >Arnu</label><input type="radio" id="I-1" value="Arnu" name="group2" /></div>
+              <div className="input-box-1"> <label htmlFor="I-2" >Alex</label><input type="radio" id="I-2" value="Alex" name="group2" /></div>
+              <div className="input-box-1"> <label htmlFor="I-3" >Lisa</label><input type="radio" id="I-3" value="Lisa" name="group2" /></div>
+              <div className="input-box-1"> <label htmlFor="I-4" >Jake</label><input type="radio" id="I-4" value="Jake" name="group2" /></div>
+              <div className="input-box-1"> <label htmlFor="I-5" >Isau</label><input type="radio" id="I-5" value="Isau" name="group2" /></div>
+              <div className="input-box-1"> <label htmlFor="I-6" >Kaku</label><input type="radio" id="I-6" value="Kaku" name="group2" /></div>
+              <div className="input-box-1"> <label htmlFor="I-7" >Omau</label><input type="radio" id="I-7" value="Omau" name="group2" /></div>
+              <div className="input-box-1"> <label htmlFor="I-8" >John</label><input type="radio" id="I-8" value="John" name="group2" /></div>
+              <div className="input-box-1"> <label htmlFor="I-9" >Mark</label><input type="radio" id="I-9" value="Mark" name="group2" /></div>
+            </fieldset>
+            <fieldset id="group3" style={{display:"none"}}>
+              <div className="input-box-1"> <label htmlFor="I-01" >Papa</label><input type="radio" id="I-01" value="Papa" name="group3" /></div>
+              <div className="input-box-1"> <label htmlFor="I-02" >Mummy</label><input type="radio" id="I-02" value="Mummy" name="group3" /></div>
+              <div className="input-box-1"> <label htmlFor="I-03" >Chacha</label><input type="radio" id="I-03" value="Chacha" name="group3" /></div>
+              <div className="input-box-1"> <label htmlFor="I-09" >Bhaai</label><input type="radio" id="I-09" value="Bhaai" name="group3" /></div>
+              <div className="input-box-1"> <label htmlFor="I-04" >Mosa</label><input type="radio" id="I-04" value="Mosa" name="group3" /></div>
+              <div className="input-box-1"> <label htmlFor="I-05" >Tau</label><input type="radio" id="I-05" value="Tau" name="group3" /></div>
+              <div className="input-box-1"> <label htmlFor="I-06" >Dada</label><input type="radio" id="I-06" value="Dada" name="group3" /></div>
+              <div className="input-box-1"> <label htmlFor="I-07" >Mama</label><input type="radio" id="I-07" value="Mama" name="group3" /></div>
+              <div className="input-box-1"> <label htmlFor="I-08" >Uncle</label><input type="radio" id="I-08" value="Uncle" name="group3" /></div>
+            </fieldset>
+          </div>
+          <button type="button" onClick={checkRelation}>
+            Verify
+          </button>
+        </form>
+      </div>
+
+      <div className="wrappers  login-box stage" id="stage-05" style={{display:"none"}} >
+        <form>
+          <h2>Verification-5</h2>
+          <h4>
+           
+             Enter the Password which  <br/> is send to your Email ID 
+          </h4>
+          <div className="input-box">
+            <span className="icon">
+              <ion-icon name="lock-closed"></ion-icon>
+            </span>
+            <input  id="LASTPASSWORD" required />
+            <label>Password</label>
+          </div>
+          <button type="button" onClick={lastCheck}>
+            View Message
+          </button>
+        </form>
+      </div>

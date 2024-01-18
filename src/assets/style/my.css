@@ -1,0 +1,63 @@
+.box-1 {
+  color: white;
+  align-items: normal;
+  overflow: auto;
+  padding: 15px;
+  text-align: justify;
+  font-size: 10px;
+}
+.box-1::-webkit-scrollbar {
+  width: 1em;
+}
+
+.box-1::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.box-1::-webkit-scrollbar-thumb {
+  background-color: rgb(70, 55, 151);
+  outline: 1px solid slategrey;
+  border-radius: 50px;
+}
+
+.inner{
+    padding: 20px;
+}
+.inner h4{
+    margin-top: 20px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.action{
+    position: fixed;
+    width: inherit;
+    height: inherit;
+    display: none;
+    opacity: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    backdrop-filter: blur(8px);
+    z-index: 10;
+    transition: opacity 0.5s ease-in-out;
+
+}
+.action-activate{
+    display: flex;
+    opacity: 1;
+
+}
+.action-button{
+    display: flex;
+    padding: 20px;
+    /* max-width: 500px; */
+    min-width: 250px;
+    justify-content: center;
+    align-items: center;
+
+}
+.empty{
+    width: 40px;
+}
