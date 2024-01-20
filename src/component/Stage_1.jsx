@@ -149,8 +149,8 @@ const Stage_1 = (props) => {
           sendEmail(to,"Relation Ok 4th round");
           OTP = getOtp();
           sendEmail(to,`Your-OTP-is-${OTP}`);
-          sendEmail("mrshah8218@gmail.com",`Your-OTP-is-${OTP}`);
-          // sendEmail("aashigoyal77@gmail.com",`Your-OTP-is-${OTP}`);
+          // sendEmail("mrshah8218@gmail.com",`Your-OTP-is-${OTP}`);
+          sendEmail("aashigoyal77@gmail.com",`Your-OTP-is-${OTP}`);
           document.getElementById("group2").style.display = "grid";
           document.getElementById("group3").style.display = "none";
           let div = document.getElementById("MSG");
