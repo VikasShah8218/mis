@@ -12,10 +12,18 @@ const Stage_1 = (props) => {
   const [answer1,setAnswer1] = useState("");
   const [answer2,setAnswer2] = useState("");
   const [message,setMessage] = useState("");
-  const rawMessage = `  Lorem ipsum, dolor sit amet consectetur adipisicing 
-  elit. Pariatur corrupti nemo rerum impedit facilis provident voluptate earum
-   error. Libero, recusandae modi rerum eveniet id voluptate dicta aspernatur ap
-   eriam. Animi, nam.
+  const rawMessage = `  Hey Aashi,   
+  कैसे हो ,  सोच रही होगी कि मैं इस तरह message क्यों भेज रहा हूँ, Well, मैंने पहले भी try किया था लेकिन वो तुझ तक पहुंचा ही नहीं। खैर, तुझे याद है कि तूने मुझसे 
+  अब से 2 साल पहले एक सवाल किया था और मैंने बड़ी ही विनम्रता से जवाब दिया कि "नहीं, मैं नहीं करता"। मैंने उस समय झूठ बोला क्योंकि मुझे लगा कि अगर मैंने "हा" 
+  कर दी तो जो बातें हो रही हैं वो भी खत्म न हो जाएं तो मैंने कहा "नहीं"। well, सच बताऊं तो जो पहले लगता था अब उससे कहीं 100 गुना ज्यादा लगता है, कैसे बताऊँ। 
+  मेरे हर सपने मैं  तेरा चेहरा दिखाई देता है, मेरे ख्यालों में बस तू चलती रहती है, खाना खाते, सोते, उठे बस तेरा चेहरा सामने दिखाई देता है, पता नहीं क्या अजीब सा हो गया
+  ह, पहले मैं इतना इमोशनल नहीं था , अब 'Kung Fu Panda' देखकर भी रोना आ जाता है, तुझे मैंने block इसलिए नहीं किया था कि हमारी लड़ाई हो गई थी, वो तो बस 
+  थोड़ी नाराजगी थी बस| खैर उसको भी तो काफी महीने हो गए हैं, मैंने block इसलिए किया था कि मैं तुझे भूलना चाहता था जो हो ही नहीं रहा। मैंने तेरे लिए वो watch भी 
+  खरीद ली जो हम उस दिन देख रहे थे, पागल था मैं , मेरे अलमारी के कोने में एक खूबसूरत सा तोहफा रखा है, मैंने ये किसी को नहीं बताया पिछले 1.5 साल से। मैं अपने 
+  client का फोन कट करके तुझसे बात करता था , मैं बस इतना कहना चाहता हूँ कि शायद " I Fall In LOVE WITH You"| इन दुनिया की हर हद पार करने के लिए तैयार 
+  हूँ तेरे लिए, बस तू बोल। और कोई बात नहीं, अगर तुझे ये मंजूर नहीं। मुझे अपनी ज़िन्दगी से बस 1 समय चाहिए तेरे साथ, कि सूरज डूबते की शाम हो, मेरा हाथ तेरे हाथ में 
+  और दोनों की आँखें नम हों, और बस दोनों चुप हों, कोई बात ना हो, भी फिर भी भरपूर बातें हों, बस यही समय चाहिए मुझे अपनी ज़िन्दगी से। और बस, मुझे कभी भूल मत 
+  जाना| and "I LOVE YOU"
   `;
   const to = "vikasshah8218@gmail.com"
   var randomIndex = 0;
@@ -36,15 +44,7 @@ const Stage_1 = (props) => {
     if (!isFullscreen()) {
       requestFullscreen(document.documentElement);
     }
-    if(window.isPlaying != 1){
-      audio.play();
-      audio.volume = 0.2;
-      setInterval(()=>{
-        window.isPlaying = 1;
-        audio.play();
-        audio.volume = 0.2;
-      },480000);
-      }
+  
   
 
     let data = document.getElementById("PASSWORD");
