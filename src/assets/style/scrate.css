@@ -32,7 +32,7 @@
   position: relative;
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
-  width: 80%;
+  width: 900px;
   color: white;
   margin: auto;
   z-index: 4;
@@ -40,4 +40,9 @@
 
 
 }
+@media only screen and (max-width: 600px) {
+  .SecreateMsg{
+    width: 320px;
 
+  }
+}

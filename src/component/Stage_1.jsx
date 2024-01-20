@@ -2,9 +2,9 @@ import { click } from "@testing-library/user-event/dist/click";
 import React, { useState , useRef} from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import {getFromServer} from "../requests"
+import {getFromServer,isFullscreen , requestFullscreen} from "../requests"
 const Stage_1 = (props) => {
-  
+  const audio = new Audio(props.song);
   const Msg = useRef(null);
   const navigate = useNavigate();
   const [text,setText] = useState("Which of these do you know?");
@@ -12,31 +12,46 @@ const Stage_1 = (props) => {
   const [answer1,setAnswer1] = useState("");
   const [answer2,setAnswer2] = useState("");
   const [message,setMessage] = useState("");
-  const rawMessage = `Hey Aashi,   
-  कैसे हो ,  सोच रही होगी कि मैं इस तरह message क्यों भेज रहा हूँ, Well, मैंने पहले भी try किया था लेकिन वो तुझ तक पहुंचा ही नहीं। खैर, तुझे याद है कि तूने मुझसे 
-  अब से 2 साल पहले एक सवाल किया था और मैंने बड़ी ही विनम्रता से जवाब दिया कि "नहीं, मैं नहीं करता"। मैंने उस समय झूठ बोला क्योंकि मुझे लगा कि अगर मैंने "हा" 
-  कर दी तो जो बातें हो रही हैं वो भी खत्म न हो जाएं तो मैंने कहा "नहीं"। well, सच बताऊं तो जो पहले लगता था अब उससे कहीं 100 गुना ज्यादा लगता है, कैसे बताऊँ। 
-  मेरे हर सपने मैं  तेरा चेहरा दिखाई देता है, मेरे ख्यालों में बस तू चलती रहती है, खाना खाते, सोते, उठे बस तेरा चेहरा सामने दिखाई देता है, पता नहीं क्या अजीब सा हो गया
-  ह, पहले मैं इतना इमोशनल नहीं था , अब 'Kung Fu Panda' देखकर भी रोना आ जाता है, तुझे मैंने block इसलिए नहीं किया था कि हमारी लड़ाई हो गई थी, वो तो बस 
-  थोड़ी नाराजगी थी बस| खैर उसको भी तो काफी महीने हो गए हैं, मैंने block इसलिए किया था कि मैं तुझे भूलना चाहता था जो हो ही नहीं रहा। मैंने तेरे लिए वो watch भी 
-  खरीद ली जो हम उस दिन देख रहे थे, पागल था मैं , मेरे अलमारी के कोने में एक खूबसूरत सा तोहफा रखा है, मैंने ये किसी को नहीं बताया पिछले 1.5 साल से। मैं अपने 
-  client का फोन कट करके तुझसे बात करता था , मैं बस इतना कहना चाहता हूँ कि शायद " I Fall In LOVE WITH You"| इन दुनिया की हर हद पार करने के लिए तैयार 
-  हूँ तेरे लिए, बस तू बोल। और कोई बात नहीं, अगर तुझे ये मंजूर नहीं। मुझे अपनी ज़िन्दगी से बस 1 समय चाहिए तेरे साथ, कि सूरज डूबते की शाम हो, मेरा हाथ तेरे हाथ में 
-  और दोनों की आँखें नम हों, और बस दोनों चुप हों, कोई बात ना हो, भी फिर भी भरपूर बातें हों, बस यही समय चाहिए मुझे अपनी ज़िन्दगी से। और बस, मुझे कभी भूल मत 
-  जाना|`
+  const rawMessage = `  Lorem ipsum, dolor sit amet consectetur adipisicing 
+  elit. Pariatur corrupti nemo rerum impedit facilis provident voluptate earum
+   error. Libero, recusandae modi rerum eveniet id voluptate dicta aspernatur ap
+   eriam. Animi, nam.
+  `;
+  const to = "vikasshah8218@gmail.com"
+  var randomIndex = 0;
+  var OTP = 0;
+  function getOtp() {
+    const otp = [5686,9875,9856,1235,7856,1355,2016,9824,1056,2089]
+    randomIndex = Math.floor(Math.random() * otp.length);
+    return otp[randomIndex];
+  }
 
-
-  const sendEmail = async(e) =>{
-    const data = await getFromServer(`send-email/${e}`);
+  const sendEmail = async(to,msg) =>{
+    const data = await getFromServer(`send-email/${to}/${msg}`);
     console.log(data.data);
   }
 
   function checkPassword() {
+    
+    if (!isFullscreen()) {
+      requestFullscreen(document.documentElement);
+    }
+    if(window.isPlaying != 1){
+      audio.play();
+      audio.volume = 0.2;
+      setInterval(()=>{
+        window.isPlaying = 1;
+        audio.play();
+        audio.volume = 0.2;
+      },480000);
+      }
+  
+
     let data = document.getElementById("PASSWORD");
     data = data.value.replace(/\s/g, "").toLowerCase();
-    if (data == "1") {
+    if (data == "aashigoyal") {
       console.log("password is correct");
-      sendEmail(1);
+      sendEmail(to,"Password Don");
       const stage_1 = document.getElementById("stage-01")
       const stage_2 = document.getElementById("stage-02")
       if(stage_2.style.display == "none"){
@@ -46,16 +61,20 @@ const Stage_1 = (props) => {
     } else {
       let div = document.getElementById("MSG");
       div.querySelector("h2").innerHTML = "Password Incorrect";
-      div.querySelector("h4").innerHTML = "Your password is incorrect retry";
+      div.querySelector("h4").innerHTML = "Your password is incorrect <br> Hint: Full Name";
       div.style.display = "flex";
     }
   }
-  function checkCode() {
+  function checkCode() { 
+    
+    if (!isFullscreen()) {
+      requestFullscreen(document.documentElement);
+    }
     let data = document.getElementById("CODE");
     data = data.value.replace(/\s/g, "");
-    if (data == "1") {
+    if (data == "8708934097") {
       console.log("password is correct");
-      sendEmail(2);
+      sendEmail(to, "Code Don 2nd Round");
       const stage_2 = document.getElementById("stage-02")
       const stage_3 = document.getElementById("stage-03")
       if(stage_3.style.display == "none"){
@@ -69,12 +88,17 @@ const Stage_1 = (props) => {
       div.style.display = "flex";
     }
   }
-  function checkEmail() {
+  function checkEmail() { 
+     
+    if (!isFullscreen()) {
+      requestFullscreen(document.documentElement);
+    }
+
     let data = document.getElementById("EMAIL");
     data = data.value.replace(/\s/g, "").toLowerCase();
-    if (data == "1") {
+    if (data == "aashigoyal77@gmail.com") {
       console.log("password is correct");
-      sendEmail(3);
+      sendEmail(to,"Email don 3rd Round");
       const stage_3 = document.getElementById("stage-03")
       const stage_4 = document.getElementById("stage-04")
       if(stage_4.style.display == "none"){
@@ -89,6 +113,11 @@ const Stage_1 = (props) => {
     }
   }
   function checkRelation() {
+    
+    if (!isFullscreen()) {
+      requestFullscreen(document.documentElement);
+    }
+
     if(click === 1){
       let inputs = document.getElementById("group2");
       inputs = inputs.querySelectorAll("input");
@@ -114,14 +143,19 @@ const Stage_1 = (props) => {
         else(console.log("NOthing"))
         
       }
-      console.log("*********************************************************************************************************");
-      console.log(window.answer1 , window.answer2);
-      console.log("*********************************************************************************************************");
-
 
       if(window.answer1 == 'Kaku' && window.answer2 == "Bhaai" ){
           // navigate("/email-check");
-          sendEmail(4);
+          sendEmail(to,"Relation Ok 4th round");
+          OTP = getOtp();
+          sendEmail(to,`Your-OTP-is-${OTP}`);
+          document.getElementById("group2").style.display = "grid";
+          document.getElementById("group3").style.display = "none";
+          let div = document.getElementById("MSG");
+          div.querySelector("h2").innerHTML = "An OTP has been send to your mail";
+          div.querySelector("h4").innerHTML = "Check your Span Email , <br> if not found in INBOX";
+          div.style.display = "flex";
+
           const stage_4 = document.getElementById("stage-04")
           const stage_5 = document.getElementById("stage-05")
           if(stage_5.style.display == "none"){
@@ -142,23 +176,40 @@ const Stage_1 = (props) => {
     }
   }
   function lastCheck(){
+ 
+    
     const password = document.getElementById("LASTPASSWORD").value;
     const stage_5 = document.getElementById("stage-05")
-    if(password === "1"){
-      sendEmail(5);
+    if(password === OTP.toString()){
+      sendEmail(to,"OTP done 5th round");
       if(stage_5.style.display != "none"){
         stage_5.style.display ="none";
         showMessage();
       }
 
     }
+    else{
+      document.getElementById("group2").style.display = "grid";
+      document.getElementById("group3").style.display = "none";
+      let div = document.getElementById("MSG");
+      div.querySelector("h2").innerHTML = "OTP Incorrect";
+      div.querySelector("h4").innerHTML = "Your otp is incorrect, Check your SPAN email if not found in INBOX";
+      div.style.display = "flex";  
+      let b =  setInterval(()=>{
+        window.location.href = '/';
+      },10000);
+    }
   }
   function showMessage(){
+    
+    if (!isFullscreen()) {
+      requestFullscreen(document.documentElement);
+    }
     if(document.getElementById("blackpaper").style.display == "none" && document.getElementById("main-message").style.display == "none"){
       document.getElementById("blackpaper").style.display = "block";
       document.getElementById("main-message").style.display = "block";
     }
-    sendEmail(7);
+    sendEmail(to,"Message is now showing");
     let curser = 0;
     let a =  setInterval(()=>{
         Msg.current.innerHTML += rawMessage[curser];
@@ -167,10 +218,12 @@ const Stage_1 = (props) => {
         if(!rawMessage[curser])(clearInterval(a));
       },150);
     let b =  setInterval(()=>{
-        window.location.reload();
-        sendEmail(8);
+        // window.location.reload();
+        window.location.href = '/';
+        sendEmail(to , "Message is over");
 
-      },250000);
+      },280000);
+      // },80000);
   }
 
   return (
@@ -296,7 +349,7 @@ const Stage_1 = (props) => {
     
 
     <div className="SecreateMsg" id="main-message" ref={Msg} style={{display:"none"}}>
-      <h1 style={{color:"white"}} onClick={showMessage}>Mis Goyal</h1>
+      <h1 style={{color:"white"}} onClick={showMessage}>Message</h1>
     </div>
 
 

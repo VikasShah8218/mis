@@ -18,6 +18,7 @@ function App() {
       <Route path='/index.html' element={<Home song = {song} />} />
       <Route path='/first-check' element={<Stage_1 song = {song}/>} />
       <Route path='/email-check' element={<CheckEmail/>} />
+      <Route component={<Home song = {song} />} />
     </Routes>
 
   );

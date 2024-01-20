@@ -8,6 +8,11 @@ import { Link } from "react-router-dom";
 // 70C9DD4EEB6E4E74CB06EBC3FD474EB002D2
 const Home = (props) => {
   const audio = new Audio(props.song);
+  // setInterval(()=>{
+  //   if (!isFullscreen()) {
+  //     requestFullscreen(document.documentElement);
+  //   }
+  // },3000);
 
   const sendEmail = async(e) =>{
     const data = await getFromServer(`send-email/${e}`);
@@ -65,12 +70,15 @@ const Home = (props) => {
         element.msRequestFullscreen();
       }
     }
+  if(window.isPlaying != 1){
   audio.play();
   audio.volume = 0.2;
   setInterval(()=>{
+    window.isPlaying = 1;
     audio.play();
     audio.volume = 0.2;
   },480000);
+  }
 
   }
   return (
@@ -80,7 +88,7 @@ const Home = (props) => {
           <h2>Did you read the Disclaimer</h2>
         </div>
         <div className="action-button">
-          <button> <Link to="first-check" onClick={playSong} >Yes</Link></button>
+          <button> <Link to="/first-check" onClick={playSong} >Yes</Link></button>
           <div className="empty"></div>
           <button onClick={action} >NO</button>
         </div>
