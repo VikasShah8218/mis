@@ -2,7 +2,7 @@ import axios from "axios";
 // const domain = "localhost:8000"
 const domain = "shah-market-backend.techkingdom.in"
 // import Cookies from "js-cookie";
-window.baseURL = `http://${domain}/`
+window.baseURL = `https://${domain}/`
 
 
 // --------------- get request ---------------
